@@ -1,131 +1,156 @@
 package patterns.creational;
 
-class Singleton {
+class Singleton
+{
     private static Singleton instance;
 
-    private Singleton() {
+    private Singleton()
+    {
     }
 
-    public static Singleton getInstance() {
-        if (instance == null) {
+    public static Singleton getInstance()
+    {
+        if (instance == null)
+        {
             instance = new Singleton();
         }
         return instance;
     }
 
-    public void showMessage() {
-        System.out.println("Привіт! Це Одинак!");
+    public void showMessage()
+    {
+        System.out.println("Привіт! Це Максим!");
     }
 }
 
-class Car {
+class Car
+{
     String model;
 
-    Car(String model) {
+    Car(String model)
+    {
         this.model = model;
     }
 
-    void drive() {
+    void drive()
+    {
         System.out.println("Ви їдете на " + model);
     }
 }
 
-class CarFactory {
-    static Car createCar(String model) {
+class CarFactory
+{
+    static Car createCar(String model)
+    {
         return new Car(model);
     }
 }
 
-class Phone {
+class Phone
+{
     String brand;
 
-    Phone(String brand) {
+    Phone(String brand)
+    {
         this.brand = brand;
     }
 
-    void call() {
+    void call()
+    {
         System.out.println("Дзвінок з " + brand);
     }
 }
 
-class PhoneFactory {
-    static Phone createPhone(String type) {
-        if (type.equals("Samsung")) {
-            return new Phone("Samsung");
-        } else if (type.equals("Apple")) {
-            return new Phone("iPhone");
-        } else {
-            return new Phone("Невідомий телефон");
+class PhoneFactory
+{
+    static Phone createPhone(String type)
+    {
+        if (type.equals("Samsung."))
+        {
+            return new Phone("Samsung.");
+        } else if (type.equals("Apple."))
+        {
+            return new Phone("iPhone.");
+        } else
+        {
+            return new Phone("Невідомий телефон.");
         }
     }
 }
 
-class House {
+class House
+{
     String walls;
     String roof;
 
-    void showHouse() {
-        System.out.println("Будинок з " + walls + " та " + roof);
+    void showHouse()
+    {
+        System.out.println("Будинок з " + walls + " та з " + roof);
     }
 }
 
-class HouseBuilder {
+class HouseBuilder
+{
     House house = new House();
 
-    HouseBuilder setWalls(String walls) {
+    HouseBuilder setWalls(String walls)
+    {
         house.walls = walls;
         return this;
     }
 
-    HouseBuilder setRoof(String roof) {
+    HouseBuilder setRoof(String roof)
+    {
         house.roof = roof;
         return this;
     }
 
-    House build() {
+    House build()
+    {
         return house;
     }
 }
 
-class Book {
+class Book
+{
     String title;
 
-    Book(String title) {
+    Book(String title)
+    {
         this.title = title;
     }
 
-    Book cloneBook() {
+    Book cloneBook()
+    {
         return new Book(this.title);
     }
 
-    void showTitle() {
+    void showTitle()
+    {
         System.out.println("Книга: " + title);
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        // Singleton
+public class Main
+{
+    public static void main(String[] args)
+    {
         Singleton singleton = Singleton.getInstance();
         singleton.showMessage();
 
-        // Factory Method
-        Car myCar = CarFactory.createCar("BMW");
+        Car myCar = CarFactory.createCar("BMW.");
         myCar.drive();
 
-        // Abstract Factory
-        Phone myPhone = PhoneFactory.createPhone("Apple");
+        Phone myPhone = PhoneFactory.createPhone("Apple.");
         myPhone.call();
 
-        // Builder
         House house = new HouseBuilder()
-                .setWalls("цегляні стіни")
-                .setRoof("металевий дах")
+                .setWalls("цеглянних стін")
+                .setRoof("металевим дахом.")
                 .build();
         house.showHouse();
 
-        // Prototype
-        Book book1 = new Book("Володар перснів");
+        Book book1 = new Book("The Witcher.");
         Book book2 = book1.cloneBook();
         book2.showTitle();
     }
